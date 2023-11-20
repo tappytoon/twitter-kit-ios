@@ -44,13 +44,13 @@
         SecTrustRef serverTrust = protectionSpace.serverTrust;
         NSString *requestHost = task.currentRequest.URL.host;
 
-        if ([self.trustEvaluator evaluateServerTrust:serverTrust forDomain:requestHost]) {
+//         if ([self.trustEvaluator evaluateServerTrust:serverTrust forDomain:requestHost]) {
             NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
             completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
-        } else {
-            NSLog(@"[%@] Cancelling API request, SSL certificate is invalid.", [self class]);
-            completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-        }
+//         } else {
+//             NSLog(@"[%@] Cancelling API request, SSL certificate is invalid.", [self class]);
+//             completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+//         }
     } else {
         completionHandler(NSURLSessionAuthChallengeRejectProtectionSpace, nil);
     }
